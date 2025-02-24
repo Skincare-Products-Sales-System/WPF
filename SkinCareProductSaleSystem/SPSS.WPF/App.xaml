@@ -1,0 +1,46 @@
+﻿<Application x:Class="SPSS.WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SPSS.WPF"
+             StartupUri="LoginWindow.xaml">
+    <Application.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <!-- Default TextBox Style: Chữ đen, nền trắng, đậm, 18, bo góc--><!--
+        <Style TargetType="TextBox">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Padding" Value="5,0"/>
+            <Setter Property="FontFamily" Value="Sans Serif Collection"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        --><!-- Default Label Style: Chữ Đen, Nền đè màu, Đậm, 18 --><!--
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontFamily" Value="Sans Serif Collection"/>
+                <Setter Property="FontSize" Value="18"/>
+            </Style>
+        --><!-- Default Button Style:  --><!--
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Sans Serif Collection"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Padding" Value="5,0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="5"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Gray"/>
+                    --><!-- Change this to your desired hover color --><!--
+                    <Setter Property="Foreground" Value="Black"/>
+                    --><!-- Change this to your desired hover text color --><!--
+                </Trigger>
+            </Style.Triggers>
+        </Style>-->
+    </Application.Resources>
+</Application>

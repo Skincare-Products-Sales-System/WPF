@@ -1,0 +1,98 @@
+﻿<Window x:Class="SPSS.WPF.CartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SPSS.WPF"
+        mc:Ignorable="d"
+        Title="Shopping Cart"
+        Height="450"
+        Width="700"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Shopping Cart"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Margin="0,0,0,20"/>
+
+        <ListView Grid.Row="1" 
+                  ItemsSource="{Binding CartItems}"
+                  Margin="0,0,0,20">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Product" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Product.Name}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Price" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Product.Price, StringFormat=C}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Quantity" Width="120">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="-"
+                                            Width="25"
+                                            Command="{Binding DataContext.DecreaseQuantityCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                            CommandParameter="{Binding}"/>
+                                    <TextBlock Text="{Binding Quantity}"
+                                             Margin="10,0"
+                                             VerticalAlignment="Center"/>
+                                    <Button Content="+"
+                                            Width="25"
+                                            Command="{Binding DataContext.IncreaseQuantityCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                            CommandParameter="{Binding}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Total" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TotalPrice, StringFormat=C}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="X"
+                                        Command="{Binding DataContext.RemoveFromCartCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                        CommandParameter="{Binding}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Row="2" Orientation="Vertical">
+            <TextBlock Text="{Binding TotalAmount, StringFormat='Total: {0:C}'}"
+                     FontSize="18"
+                     FontWeight="Bold"
+                     HorizontalAlignment="Right"
+                     Margin="0,0,0,10"/>
+            <Button Content="Checkout"
+                    Command="{Binding CheckoutCommand}"
+                    Width="120"
+                    Height="35"
+                    HorizontalAlignment="Right"
+                    IsEnabled="{Binding IsCheckoutEnabled}"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

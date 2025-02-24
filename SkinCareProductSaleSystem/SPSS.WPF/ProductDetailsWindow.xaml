@@ -1,0 +1,184 @@
+﻿<Window x:Class="SPSS.WPF.ProductDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SPSS.WPF"
+        mc:Ignorable="d"
+        Title="Product Details"
+        Height="600"
+        Width="800"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style x:Key="SectionHeaderStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,20,0,10"/>
+        </Style>
+
+        <Style x:Key="DetailLabelStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="#757575"/>
+            <Setter Property="Margin" Value="0,5,10,5"/>
+        </Style>
+
+        <Style x:Key="DetailValueStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <Style x:Key="FeedbackCardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#EEEEEE"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Padding" Value="15"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+    </Window.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Product Details -->
+                <RowDefinition Height="Auto"/>
+                <!-- Feedback Section -->
+            </Grid.RowDefinitions>
+
+            <!-- Product Details Section -->
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="Product Details" Style="{StaticResource SectionHeaderStyle}"/>
+
+                <Border Background="White" 
+                        BorderBrush="#EEEEEE" 
+                        BorderThickness="1" 
+                        CornerRadius="5" 
+                        Padding="20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Name -->
+                        <TextBlock Grid.Row="0" Grid.Column="0" 
+                                 Text="Name:" 
+                                 Style="{StaticResource DetailLabelStyle}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" 
+                                 x:Name="txtProductName"
+                                 Style="{StaticResource DetailValueStyle}"/>
+
+                        <!-- Category -->
+                        <TextBlock Grid.Row="1" Grid.Column="0" 
+                                 Text="Category:" 
+                                 Style="{StaticResource DetailLabelStyle}"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" 
+                                 x:Name="txtCategory"
+                                 Style="{StaticResource DetailValueStyle}"/>
+
+                        <!-- Price -->
+                        <TextBlock Grid.Row="2" Grid.Column="0" 
+                                 Text="Price:" 
+                                 Style="{StaticResource DetailLabelStyle}"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" 
+                                 x:Name="txtPrice"
+                                 Style="{StaticResource DetailValueStyle}"/>
+
+                        <!-- Stock -->
+                        <TextBlock Grid.Row="3" Grid.Column="0" 
+                                 Text="Stock:" 
+                                 Style="{StaticResource DetailLabelStyle}"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" 
+                                 x:Name="txtStock"
+                                 Style="{StaticResource DetailValueStyle}"/>
+
+                        <!-- Rating -->
+                        <TextBlock Grid.Row="4" Grid.Column="0" 
+                                 Text="Rating:" 
+                                 Style="{StaticResource DetailLabelStyle}"/>
+                        <StackPanel Grid.Row="4" Grid.Column="1" 
+                                  Orientation="Horizontal">
+                            <TextBlock x:Name="txtAverageRating"
+                                     Style="{StaticResource DetailValueStyle}"/>
+                            <TextBlock Text=" ★" 
+                                     Foreground="#FFC107" 
+                                     FontSize="14"/>
+                        </StackPanel>
+
+                        <!-- Description -->
+                        <TextBlock Grid.Row="5" Grid.Column="0" 
+                                 Text="Description:" 
+                                 Style="{StaticResource DetailLabelStyle}"/>
+                        <TextBlock Grid.Row="5" Grid.Column="1" 
+                                 x:Name="txtDescription"
+                                 Style="{StaticResource DetailValueStyle}"
+                                 TextWrapping="Wrap"/>
+                    </Grid>
+                </Border>
+
+                <!-- Feedback Section -->
+                <TextBlock Text="Customer Feedback" 
+                         Style="{StaticResource SectionHeaderStyle}"/>
+
+                <ItemsControl x:Name="FeedbackList">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource FeedbackCardStyle}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <!-- User and Rating -->
+                                    <StackPanel Grid.Row="0" 
+                                              Orientation="Horizontal" 
+                                              Margin="0,0,0,10">
+                                        <TextBlock Text="{Binding UserName}" 
+                                                 FontWeight="SemiBold"/>
+                                        <TextBlock Text=" • " 
+                                                 Margin="5,0"/>
+                                        <TextBlock Text="{Binding Rating}" 
+                                                 Foreground="#FFC107"/>
+                                        <TextBlock Text=" ★" 
+                                                 Foreground="#FFC107"/>
+                                    </StackPanel>
+
+                                    <!-- Comment -->
+                                    <TextBlock Grid.Row="1" 
+                                             Text="{Binding Comment}" 
+                                             TextWrapping="Wrap"/>
+
+                                    <!-- Date -->
+                                    <TextBlock Grid.Row="2" 
+                                             Text="{Binding CreatedAt, StringFormat='{}{0:d MMMM yyyy}'}" 
+                                             Foreground="#757575" 
+                                             Margin="0,10,0,0" 
+                                             FontSize="12"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                <TextBlock x:Name="NoFeedbackMessage"
+                   Text="Hiện tại chưa có ai feedback về sản phẩm này"
+                   FontSize="14"
+                   Foreground="#757575"
+                   Margin="0,10,0,0"
+                   Visibility="Collapsed"/>
+                        <!-- Bắt đầu ở trạng thái ẩn -->
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Window>

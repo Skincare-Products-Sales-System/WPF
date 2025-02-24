@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPSS.BLL", "SPSS.BLL\SPSS.BLL.csproj", "{BCF5CE7C-94D9-45CB-BCCC-A0F7A59170C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPSS.DAL", "SPSS.DAL\SPSS.DAL.csproj", "{7B986D1D-E16D-4072-A359-D93BEF70D06D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SPSS.WPF", "SPSS.WPF\SPSS.WPF.csproj", "{5C390FC7-DC25-41DC-8288-7183550CC27E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCF5CE7C-94D9-45CB-BCCC-A0F7A59170C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCF5CE7C-94D9-45CB-BCCC-A0F7A59170C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCF5CE7C-94D9-45CB-BCCC-A0F7A59170C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCF5CE7C-94D9-45CB-BCCC-A0F7A59170C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B986D1D-E16D-4072-A359-D93BEF70D06D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B986D1D-E16D-4072-A359-D93BEF70D06D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B986D1D-E16D-4072-A359-D93BEF70D06D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B986D1D-E16D-4072-A359-D93BEF70D06D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C390FC7-DC25-41DC-8288-7183550CC27E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C390FC7-DC25-41DC-8288-7183550CC27E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C390FC7-DC25-41DC-8288-7183550CC27E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C390FC7-DC25-41DC-8288-7183550CC27E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55869C31-C867-4D30-A072-BCB272F99CE4}
+	EndGlobalSection
+EndGlobal
