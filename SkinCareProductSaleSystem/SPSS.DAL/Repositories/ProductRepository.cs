@@ -25,6 +25,29 @@ namespace SPSS.DAL.Repositories
 				_context.SaveChanges(); //chính thức update trong db
 			}
 		}
+
+		public void DeleteProduct(int id)
+		{
+			using(var _context = new SkincareProductSaleSystemContext())
+			{
+				var product = _context.Products.Find(id);
+
+				if(product != null)
+				{
+					_context.Products.Remove(product);
+					_context.SaveChanges();
+				}
+			}
+		}
+		public void AddProduct(Product product)
+		{
+			using(var _context = new SkincareProductSaleSystemContext())
+			{
+				_context.Products.Add(product);
+				_context.SaveChanges();
+			}
+		}
+
 		//public Product GetProduct(int id)
 		//{
 		//	using (var _context = new SkincareProductSaleSystemContext())

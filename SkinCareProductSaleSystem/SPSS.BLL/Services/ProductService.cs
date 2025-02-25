@@ -20,5 +20,14 @@ namespace SPSS.BLL.Services
 		{
 			_productRepository.UpdateProduct(product);
 		}
+		public void AddProduct(Product product)
+		{
+			_productRepository.AddProduct(product);
+		}
+
+		public void DeleteProduct(int id)
+		{
+			_productRepository.DeleteProduct(id);
+		}
 	}
 }

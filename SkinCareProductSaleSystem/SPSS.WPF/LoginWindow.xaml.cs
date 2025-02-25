@@ -47,25 +47,35 @@ namespace SPSS.WPF
                 return; //early return, ko cần viết else
             }
 
-            if (acc.SkinType == null || acc.SkinType == "")
-            {
-				App.AuthenticatedUser = acc; // Store the authenticated user in App.xaml.cs
-				QuestionWindow main = new();
-                main.AuthenticatedUser = acc; //GỬI ACC VỪA LOGIN THÀNH CÔNG SANG KIA LÀM BIẾN
-                main.Show();
-                this.Hide();
-            }
-            else
-            {
-				App.AuthenticatedUser = acc; // Store the authenticated user in App.xaml.cs
+			// Store the authenticated user
+			App.AuthenticatedUser = acc;
 
-				MainWindow mainWindow = new();
-				mainWindow.AuthenticatedUser = acc;  // Gán user
-				mainWindow.WelcomeMessage = $"Welcome, {acc.Username}!"; // Cập nhật thông báo
+			// Open the appropriate window based on user role and skin type
+			if (acc.Role == 2)
+			{
+				AdminWindow adminWindow = new AdminWindow();
+				adminWindow.Show();
+			}
+			else if (acc.Role == 1 && string.IsNullOrWhiteSpace(acc.SkinType))
+			{
+				QuestionWindow questionWindow = new QuestionWindow
+				{
+					AuthenticatedUser = acc // Pass the authenticated user
+				};
+				questionWindow.Show();
+			}
+			else
+			{
+				MainWindow mainWindow = new MainWindow
+				{
+					AuthenticatedUser = acc, // Assign user
+					WelcomeMessage = $"Welcome, {acc.Username}!" // Update welcome message
+				};
 				mainWindow.Show();
-                this.Hide();
-            }
-        }
+			}
+
+			this.Hide(); // Hide the current window
+		}
 		private void btClose_Click(object sender, RoutedEventArgs e)
 		{
 			// Close the application

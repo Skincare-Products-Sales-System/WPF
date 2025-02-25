@@ -199,6 +199,7 @@ namespace SPSS.WPF
 					Password = Password,
 					Email = Email,
 					Phone = Phone,
+					Role = 1
 				};
 
 				_userService.SignUp(user);

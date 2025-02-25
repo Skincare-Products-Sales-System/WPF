@@ -33,6 +33,10 @@ namespace SPSS.BLL.Services
         {
              _userRepository.Create(obj);
         }
+        public void DeleteUser(int id)
+        {
+            _userRepository.DeleteUser(id);
+        }
         
     }
 }

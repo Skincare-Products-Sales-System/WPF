@@ -30,13 +30,20 @@ namespace SPSS.DAL.Repositories
             _context = new SkincareProductSaleSystemContext();
             return _context.Users.ToList();
         }
-        public void Delete(User obj)
-        {
-            _context = new();  //mỗi lần xài 1 lần new _context
-            _context.Users.Remove(obj); //trong ram
-            _context.SaveChanges(); //chính thức xoá trong db
-        }
-        public void Create(User obj)
+		public void DeleteUser(int id)
+		{
+			using (var _context = new SkincareProductSaleSystemContext())
+			{
+				var user = _context.Users.Find(id);
+
+				if (user != null)
+				{
+					_context.Users.Remove(user);
+					_context.SaveChanges();
+				}
+			}
+		}
+		public void Create(User obj)
         {
             _context = new();  //mỗi lần xài 1 lần new _context
             _context.Users.Add(obj); //trong ram
