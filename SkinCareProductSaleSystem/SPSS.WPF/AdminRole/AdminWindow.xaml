@@ -108,14 +108,22 @@
                              Style="{StaticResource NavButtonStyle}"
                              Margin="0,5,0,5"/>
 
-                <RadioButton x:Name="QuestionManagerButton" 
+                <!--<RadioButton x:Name="QuestionManagerButton" 
                              Content="Question Manager" 
                              GroupName="NavButtons"
                              Foreground="White"
                              FontSize="16"
                              Checked="QuestionManagerButton_Checked"
                              Style="{StaticResource NavButtonStyle}"
-                             Margin="0,5,0,5"/>
+                             Margin="0,5,0,5"/>-->
+                <RadioButton x:Name="OrderManagerButton" 
+                            Content="Order Manager" 
+                            GroupName="NavButtons"
+                            Foreground="White"
+                            FontSize="16"
+                            Checked="OrderManagerButton_Checked"
+                            Style="{StaticResource NavButtonStyle}"
+                            Margin="0,5,0,5"/>            
 
                 <!-- Logout -->
                 <Button Content="Logout"

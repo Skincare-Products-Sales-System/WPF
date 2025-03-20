@@ -10,15 +10,23 @@ namespace SPSS.DAL.Repositories
 {
 	public class OrderRepository
 	{
-		public List<Order> GetAllOrdersAsync()
-		{
-			using (var context = new SkincareProductSaleSystemContext())
-			{
-				return  context.Orders.ToList();
-			}
-		}
-
-		public List<Order> GetOrderByUserId(int userId)
+        public List<Order> GetAllOrdersAsync()
+        {
+            try
+            {
+                using var context = new SkincareProductSaleSystemContext();
+                if (context.Orders == null)
+                {
+                    throw new InvalidOperationException("Orders DbSet is not initialized in the context. Please ensure DbSet<Order> Orders is defined in SkincareProductSaleSystemContext and the database connection is valid.");
+                }
+                return context.Orders.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException($"Failed to retrieve orders from the database: {ex.Message}", ex);
+            }
+        }
+        public List<Order> GetOrderByUserId(int userId)
 		{
 			using(var context = new SkincareProductSaleSystemContext())
 			{

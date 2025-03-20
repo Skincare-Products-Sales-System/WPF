@@ -38,10 +38,16 @@ namespace SPSS.WPF
 			try
 			{
 				var products = _productService.GetAllProducts();
-				if (products != null)
+                _products.Clear(); // Xóa danh sách cũ trước khi tải mới
+                if (products != null)
 				{
 					_products = new ObservableCollection<Product>(products);
 					ProductsDataGrid.ItemsSource = _products;
+					CategoryFilterComboBox.Items.Add(new ComboBoxItem { Content = "All category" });
+					foreach (var category in products.Select(p => p.Category).Distinct())
+					{
+                        CategoryFilterComboBox.Items.Add(new ComboBoxItem { Content = category });
+                    }
 				}
 				else
 				{
@@ -93,8 +99,10 @@ namespace SPSS.WPF
 					(string.IsNullOrWhiteSpace(searchText) ||
 					 (p.Name != null && p.Name.ToLower().Contains(searchText)) ||
 					 (p.Description != null && p.Description.ToLower().Contains(searchText))) &&
-					(string.IsNullOrEmpty(selectedCategoryName) || p.Category == selectedCategoryName)
-				).ToList();
+                    (string.IsNullOrEmpty(selectedCategoryName) ||
+					 selectedCategoryName == "All category" || // Thêm điều kiện cho "All category"
+					 p.Category == selectedCategoryName)
+						).ToList();
 
 				ProductsDataGrid.ItemsSource = new ObservableCollection<Product>(filteredProducts);
 			}

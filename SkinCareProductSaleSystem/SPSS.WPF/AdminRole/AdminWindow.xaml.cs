@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SPSS.WPF.AdminRole;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 namespace SPSS.WPF
@@ -10,9 +11,10 @@ namespace SPSS.WPF
 			InitializeComponent();
 			// Đặt nút Account Manager là mặc định được chọn
 			AccountManagerButton.IsChecked = true;
-		}
+            ContentFrame.Content = new AccountManagerControl();
+        }
 
-		private void AccountManagerButton_Checked(object sender, RoutedEventArgs e)
+        private void AccountManagerButton_Checked(object sender, RoutedEventArgs e)
 		{
 			if (HeaderTextBlock != null)
 			{
@@ -31,18 +33,27 @@ namespace SPSS.WPF
 			}
 		}
 
-		private void QuestionManagerButton_Checked(object sender, RoutedEventArgs e)
+		//private void QuestionManagerButton_Checked(object sender, RoutedEventArgs e)
+		//{
+		//	if (HeaderTextBlock != null)
+		//	{
+		//		HeaderTextBlock.Text = "Question Management";
+		//		ContentFrame.Content = new QuestionManagerControl();
+		//	}
+		//}
+		private void OrderManagerButton_Checked(object sender, RoutedEventArgs e)
 		{
 			if (HeaderTextBlock != null)
 			{
-				HeaderTextBlock.Text = "Question Management";
-				ContentFrame.Content = new QuestionManagerControl();
+				HeaderTextBlock.Text = "Orders Management";
+				ContentFrame.Content = new OrderManagerControl();
 			}
 		}
 
+
 		private void LogoutButton_Click(object sender, RoutedEventArgs e)
 		{
-			MainWindow loginWindow = new MainWindow();
+			LoginWindow loginWindow = new LoginWindow();
 			loginWindow.Show();
 			this.Close();
 		}

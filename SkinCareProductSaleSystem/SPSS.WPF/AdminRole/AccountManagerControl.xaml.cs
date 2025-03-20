@@ -75,7 +75,9 @@ namespace SPSS.WPF
 			EmailTextBlock.Text = user.Email;
 			RoleTextBlock.Text = user.Role.ToString();
 			PhoneTextBlock.Text = user.Phone;
-		}
+            SkintypeTextBlock.Text = user.SkinType;
+
+        }
 
 		private void DeleteUser_Click(object sender, RoutedEventArgs e)
 		{

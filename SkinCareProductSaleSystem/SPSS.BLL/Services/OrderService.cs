@@ -26,5 +26,5 @@ namespace SPSS.BLL.Services
 		{
 			return _repository.GetOrderByUserId(id);
 		}
-	}
+	}	
 }

@@ -28,7 +28,6 @@
                       Margin="0,0,15,0"
                       SelectionChanged="CategoryFilterComboBox_SelectionChanged"
                       SelectedIndex="0">
-                <ComboBoxItem Content="All Categories"/>
                 <!-- Categories will be loaded from database -->
             </ComboBox>
 
